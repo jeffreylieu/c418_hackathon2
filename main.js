@@ -81,3 +81,40 @@ function getMoonData(year = (new Date()).getFullYear()) {
     $.ajax(ajaxConfig)
 }
 
+function play(){
+    var audio = document.getElementById("audio");
+    audio.play();
+}
+function displayMoon() {
+var moonArr=[
+    {
+        src: "images/firstquarter.jpg",
+        id: "moonID",
+        width: "200",
+        height: "200"
+    },
+    {
+        src: "images/newmoon.png",
+        id: "moonID",
+        width: "200",
+        height: "200"
+    },
+    {
+        src: "images/fullmoon.jpg",
+        id: "moonID",
+        width: "200",
+        height: "200"
+    },
+    {
+        src: "images/lastquartermoon.jpg",
+        id: "moonID",
+        width: "200",
+        height: "200"
+    }
+]
+
+
+
+}
+
+
