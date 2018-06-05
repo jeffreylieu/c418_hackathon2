@@ -64,4 +64,9 @@ p {
     min-height:50%;
     min-width:50%; 
     transform: translate( -50%, -50%); 
+
+}
+
+.borderClass{
+    border: 2px solid lime;
 }
