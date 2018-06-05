@@ -35,6 +35,7 @@ function getWeatherData(){
             if(displayWeatherInfo < 100){
                 showWolfModal();
                 setTimeout(closeWolfModal,2000); 
+                $('#city').val('')
                 // alert('who let the wolves out?'); //replace with modal later
             }
         },
