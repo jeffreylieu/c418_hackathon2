@@ -58,6 +58,14 @@ p {
     display: none; 
 }
 #modalBody{
+
+    background-image: url("images/werewolfjump2.gif");
+    background-repeat: no-repeat;
+    background-position: center;
+    border: 1px solid mediumpurple;
+    border-radius: 4px;
+    width: 50%;
+    height: 50%;
     position: fixed; 
     border-radius: 20px 20px;
     left: 53%;
@@ -73,6 +81,7 @@ p {
 }
 .borderClass{
     border: 2px solid lime;
+
 }
 
 
