@@ -41,6 +41,18 @@ function getWeatherData(){
 
 }
 
+function showWolfModal(){
+    document.querySelector("#modalShadow").style.display = "block";
+}
+
+function closeWolfModal(){
+    document.querySelector("#modalShadow").style.display = "none";
+}
+
+function setTimeOutForModal(){
+    setTimeout(closeWolfModal,2000); 
+}
+
 var twitterArray=[]; 
 
 function twitterRequest (){
@@ -49,18 +61,20 @@ function twitterRequest (){
           method: 'get', 
           dataType: 'json',
           success:function(result){
-            console.log(result); 
-            console.log(result.tweets.statuses[0].text); 
+            console.log("twitter data", result); 
+            // console.log(result.tweets.statuses[0].text); 
+            debugger; 
             var twitterData=(result.tweets.statuses);
             for (var index=0; index<twitterData.length; index++){
                 twitterArray.push(result.tweets.statuses[index].text); 
+                $("#tweets").append(twitterArray[index]); 
             }
 
           },
 
           data:{
                "search_term":"werewolves",
-            //    "iso_language_code":"en",
+                "iso_language_code":"en",
             //    "hastags": "#werewolves",         
           },    
           metadata:{
