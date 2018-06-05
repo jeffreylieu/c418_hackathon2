@@ -46,9 +46,11 @@ function twitterRequest (){
           dataType: 'json',
           success:function(result){
             console.log(result); 
-            //   console.log(result.tweets.statuses.text);
-                
-        //        for (var indexArray=0; indexArray<results.tweet.statuses.length; itt )
+            console.log(result.tweets.statuses[0].text); 
+            var twitterData=(result.tweets.statuses);
+            for (var index=0; index<twitterData.length; index++){
+                twitterArray.push(result.tweets.statuses[index].text); 
+            }
 
           },
 
