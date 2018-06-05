@@ -1,9 +1,11 @@
+
 $(document).ready(startApp);
 
 function startApp(){
 getWeatherData();
 attachEventforWeather();
-
+twitterRequest();
+getMoonData();
 }
 function attachEventforWeather(){
     $("#weatherBtn").on("click", getWeatherData  )
@@ -14,8 +16,6 @@ function getWeatherData(){
    var cityInput = $('#city').val(); // grabbing input value from DOM
    var temperatureUnit = '&units=imperial' // converting to fareinheit
    var apiKey = '&appid=9dd197942a0bc259df00f2207629ec26' // API key
-//    var displayWeatherInfo = displayWeather(data) //storing the display into variable
-//    $('#displayWeather').text(displayWeatherInfo) //show on DOM
     var baseUrl = 'http://api.openweathermap.org/data/2.5/forecast?q=';
     var url = baseUrl + cityInput + temperatureUnit + apiKey;
 
@@ -26,8 +26,9 @@ function getWeatherData(){
         dataType: 'json',
         success: function(response){
             console.log('Weather called');
-            var displayWeatherInfo = response.list[0].main.temp
+            var displayWeatherInfo = Math.floor(response.list[0].main.temp)
             $('#displayWeather').text(displayWeatherInfo); 
+            $('#degreeSymbol').append('<div>&#176;</div>')
         },
         error: function(err){
             console.log('failed');
@@ -37,6 +38,47 @@ function getWeatherData(){
 
 }
 
+var twitterArray=[]; 
 
+function twitterRequest (){
+    var twitterObject={
+          url: ' https://s-apis.learningfuze.com/hackathon/twitter/index.php',
+          method: 'get', 
+          dataType: 'json',
+          success:function(result){
+              console.log(result.tweets.statuses[i].text);
+              
+            //   var twitterArray=[];
+            //   twitterArray.push(result); 
 
+          },
+          data:{
+               "search_term":"werewolves",
+            //    "iso_language_code":"en",
+            //    "hastags": "#werewolves",         
+          },    
+          metadata:{
+              "iso_language_code":"en"
+          }
+    }
+    $.ajax(twitterObject); 
+}
+
+function getMoonData(year = (new Date()).getFullYear()) {
+
+    var ajaxConfig = {
+        url: 'http://api.usno.navy.mil/moon/phase',
+        method: "GET",
+        dataType: 'JSON',
+        data: {
+            year
+        },
+
+        success: function (result) {
+            console.log('2) AJAX Success function called, with the following result:', result);
+
+        }
+    };
+    $.ajax(ajaxConfig)
+}
 
