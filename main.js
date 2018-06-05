@@ -7,7 +7,8 @@ function startApp(){
 getWeatherData();
 attachEventforWeather();
 twitterRequest();
-getMoonData();
+//getMoonData();
+getMoonDataDate();
 }
 function attachEventforWeather(){
     $("#weatherBtn").on("click", getWeatherData  )
@@ -31,8 +32,10 @@ function getWeatherData(){
             var displayWeatherInfo = Math.floor(response.list[0].main.temp)
             $('#displayWeather').text(displayWeatherInfo + ' Degrees')
 
-            if(displayWeatherInfo < 80){
-                alert('who let the wolves out?'); //replace with modal later
+            if(displayWeatherInfo < 100){
+                showWolfModal();
+                setTimeout(closeWolfModal,2000); 
+                // alert('who let the wolves out?'); //replace with modal later
             }
         },
         error: function(err){
@@ -45,6 +48,8 @@ function getWeatherData(){
 
 function showWolfModal(){
     document.querySelector("#modalShadow").style.display = "block";
+
+
 }
 
 function closeWolfModal(){
@@ -62,8 +67,6 @@ function twitterRequest (){
           dataType: 'json',
           success:function(result){
             console.log("twitter data", result); 
-            // console.log(result.tweets.statuses[0].text); 
-            debugger; 
             var twitterData=(result.tweets.statuses);
             for (var index=0; index<twitterData.length; index++){
                 twitterArray.push(result.tweets.statuses[index].text); 
@@ -76,8 +79,7 @@ function twitterRequest (){
 
           data:{
                "search_term":"werewolves",
-                "iso_language_code":"en",
-            //    "hastags": "#werewolves",         
+                "iso_language_code":"en",         
           },    
           metadata:{
               "iso_language_code":"en"
@@ -86,7 +88,7 @@ function twitterRequest (){
     $.ajax(twitterObject); 
 }
 
-function getMoonData(year = (new Date()).getFullYear()) {
+/*function getMoonData(year = (new Date()).getFullYear()) {
 
     var ajaxConfig = {
         url: 'http://api.usno.navy.mil/moon/phase',
@@ -94,6 +96,45 @@ function getMoonData(year = (new Date()).getFullYear()) {
         dataType: 'JSON',
         data: {
             year
+        },
+
+        success: function (result) {
+            console.log('2) AJAX Success function called, with the following result:', result);
+
+        }
+    };
+    $.ajax(ajaxConfig)
+}*/
+//updated moon data function so it grabs the current moon phase
+function getMoonDataDate() {
+
+    var today = new Date();
+    var dd = today.getDate();
+
+    var mm = today.getMonth()+1;
+    var yyyy = today.getFullYear();
+    if(dd<10)
+    {
+        dd='0'+dd;
+    }
+
+    if(mm<10)
+    {
+        mm='0'+mm;
+    }
+
+    today = mm+'/'+dd+'/'+yyyy;
+    console.log(today);
+
+
+
+    var ajaxConfig = {
+        url: 'http://api.usno.navy.mil/moon/phase',
+        method: "GET",
+        dataType: 'JSON',
+        data: {
+            date: today,
+            nump: 1
         },
 
         success: function (result) {
