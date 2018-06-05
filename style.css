@@ -62,22 +62,12 @@ p {
     background-image: url("images/werewolfjump2.gif");
     background-repeat: no-repeat;
     background-position: center;
+    margin: 10% auto 15% auto;
     border: 1px solid mediumpurple;
     border-radius: 4px;
     width: 50%;
     height: 50%;
-    position: fixed; 
-    border-radius: 20px 20px;
-    left: 53%;
-    top: 47%;
-    min-height:50%;
-    min-width:38%;
-    transform: translate( -50%, -50%);
-    background-image: url('images/jump.gif');
-    background-repeat: no-repeat;
-    height: 40%;
-
-
+    
 }
 .borderClass{
     border: 2px solid lime;
