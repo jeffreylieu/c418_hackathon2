@@ -1,6 +1,8 @@
 
 $(document).ready(startApp);
 
+var twitterArray=[]; 
+
 function startApp(){
 getWeatherData();
 attachEventforWeather();
@@ -58,8 +60,6 @@ function setTimeOutForModal(){
     setTimeout(closeWolfModal,2000); 
 }
 
-var twitterArray=[]; 
-
 function twitterRequest (){
     var twitterObject={
           url: ' https://s-apis.learningfuze.com/hackathon/twitter/index.php',
@@ -70,7 +70,9 @@ function twitterRequest (){
             var twitterData=(result.tweets.statuses);
             for (var index=0; index<twitterData.length; index++){
                 twitterArray.push(result.tweets.statuses[index].text); 
-                $("#tweets").append(twitterArray[index]); 
+                var twitterDiv= $("<div>").addClass("borderClass");
+                $("#tweets").append(twitterDiv)
+                $(twitterDiv).append(twitterArray[index]); 
             }
 
           },
@@ -147,6 +149,7 @@ function play(){
     var audio = document.getElementById("audio");
     audio.play();
 }
+
 function displayMoon() {
 var moonArr=[
     {

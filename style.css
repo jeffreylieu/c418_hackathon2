@@ -10,6 +10,7 @@ body {
     background-color: black;
     background-repeat: no-repeat;
 }
+
 .jumbotron {
     background-color: black;
     font-family: 'Creepster', cursive;
@@ -24,8 +25,8 @@ body {
     font-size: 2em;
     text-shadow: 0 0 75px mediumpurple;
     box-shadow: 0 0 50px mediumpurple;
-
 }
+
 #tweets, #videos, .weatherContainer {
     background-color: black;
     font-family: 'Creepster', cursive;
@@ -41,8 +42,8 @@ button {
     background-color: black;
     border-radius: 8px;
     border: 3px solid mediumpurple;
-
 }
+
 p {
     font-size: 20px;
 }
@@ -63,7 +64,11 @@ p {
     top: 50%; 
     min-height:50%;
     min-width:50%; 
-    transform: translate( -50%, -50%); 
+    transform: translate( -50%, -50%);
+}
+.borderClass{
+    border: 2px solid lime;
+}
     background-image: url('images/jump.gif');
     background-repeat: no-repeat;
 }
@@ -72,3 +77,4 @@ p {
 
     height: 100%
 } */
+
