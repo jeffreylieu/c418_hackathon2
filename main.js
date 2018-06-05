@@ -27,7 +27,11 @@ function getWeatherData(){
         success: function(response){
             console.log('Weather called');
             var displayWeatherInfo = Math.floor(response.list[0].main.temp)
-            $('#displayWeather').text(displayWeatherInfo).append('<div class="degreeSymbol">&#176;</div>')
+            $('#displayWeather').text(displayWeatherInfo + ' Degrees')
+
+            if(displayWeatherInfo < 80){
+                alert('who let the wolves out?'); //replace with modal later
+            }
         },
         error: function(err){
             console.log('failed');
