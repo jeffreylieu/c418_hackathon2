@@ -5,7 +5,8 @@ function startApp(){
 getWeatherData();
 attachEventforWeather();
 twitterRequest();
-getMoonData();
+//getMoonData();
+getMoonDataDate();
 }
 function attachEventforWeather(){
     $("#weatherBtn").on("click", getWeatherData  )
@@ -85,7 +86,7 @@ function twitterRequest (){
     $.ajax(twitterObject); 
 }
 
-function getMoonData(year = (new Date()).getFullYear()) {
+/*function getMoonData(year = (new Date()).getFullYear()) {
 
     var ajaxConfig = {
         url: 'http://api.usno.navy.mil/moon/phase',
@@ -93,6 +94,45 @@ function getMoonData(year = (new Date()).getFullYear()) {
         dataType: 'JSON',
         data: {
             year
+        },
+
+        success: function (result) {
+            console.log('2) AJAX Success function called, with the following result:', result);
+
+        }
+    };
+    $.ajax(ajaxConfig)
+}*/
+//updated moon data function so it grabs the current moon phase
+function getMoonDataDate() {
+
+    var today = new Date();
+    var dd = today.getDate();
+
+    var mm = today.getMonth()+1;
+    var yyyy = today.getFullYear();
+    if(dd<10)
+    {
+        dd='0'+dd;
+    }
+
+    if(mm<10)
+    {
+        mm='0'+mm;
+    }
+
+    today = mm+'/'+dd+'/'+yyyy;
+    console.log(today);
+
+
+
+    var ajaxConfig = {
+        url: 'http://api.usno.navy.mil/moon/phase',
+        method: "GET",
+        dataType: 'JSON',
+        data: {
+            date: today,
+            nump: 1
         },
 
         success: function (result) {
