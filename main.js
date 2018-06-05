@@ -29,8 +29,10 @@ function getWeatherData(){
             var displayWeatherInfo = Math.floor(response.list[0].main.temp)
             $('#displayWeather').text(displayWeatherInfo + ' Degrees')
 
-            if(displayWeatherInfo < 80){
-                alert('who let the wolves out?'); //replace with modal later
+            if(displayWeatherInfo < 100){
+                showWolfModal();
+                setTimeout(closeWolfModal,2000); 
+                // alert('who let the wolves out?'); //replace with modal later
             }
         },
         error: function(err){
@@ -43,6 +45,8 @@ function getWeatherData(){
 
 function showWolfModal(){
     document.querySelector("#modalShadow").style.display = "block";
+
+
 }
 
 function closeWolfModal(){
@@ -62,8 +66,6 @@ function twitterRequest (){
           dataType: 'json',
           success:function(result){
             console.log("twitter data", result); 
-            // console.log(result.tweets.statuses[0].text); 
-            debugger; 
             var twitterData=(result.tweets.statuses);
             for (var index=0; index<twitterData.length; index++){
                 twitterArray.push(result.tweets.statuses[index].text); 
@@ -74,8 +76,7 @@ function twitterRequest (){
 
           data:{
                "search_term":"werewolves",
-                "iso_language_code":"en",
-            //    "hastags": "#werewolves",         
+                "iso_language_code":"en",         
           },    
           metadata:{
               "iso_language_code":"en"
