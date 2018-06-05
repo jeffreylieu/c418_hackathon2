@@ -19,8 +19,8 @@ function getWeatherData(){
    var cityInput = $('#city').val(); // grabbing input value from DOM
    var temperatureUnit = '&units=imperial' // converting to fareinheit
    var apiKey = '&appid=9dd197942a0bc259df00f2207629ec26' // API key
-    var baseUrl = 'http://api.openweathermap.org/data/2.5/forecast?q=';
-    var url = baseUrl + cityInput + temperatureUnit + apiKey;
+   var baseUrl = 'http://api.openweathermap.org/data/2.5/forecast?q=';
+   var url = baseUrl + cityInput + temperatureUnit + apiKey;
 
    if(cityInput){
     $.ajax({
@@ -33,9 +33,9 @@ function getWeatherData(){
             $('#displayWeather').text(displayWeatherInfo + ' Degrees')
 
             if(displayWeatherInfo < 100){
-                showWolfModal();
-                setTimeout(closeWolfModal,2000); 
+                showWolfModal(); 
                 $('#city').val('')
+                setTimeout(closeWolfModal,3000);
                 // alert('who let the wolves out?'); //replace with modal later
             }
         },
