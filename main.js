@@ -29,7 +29,7 @@ function getWeatherData(){
             var displayWeatherInfo = Math.floor(response.list[0].main.temp)
             $('#displayWeather').text(displayWeatherInfo + ' Degrees')
 
-            if(displayWeatherInfo < 80){
+            if(displayWeatherInfo < 100){
                 alert('who let the wolves out?'); //replace with modal later
             }
         },
