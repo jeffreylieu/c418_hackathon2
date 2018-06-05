@@ -13,12 +13,13 @@ function twitterRequest (){
           method: 'get', 
           dataType: 'json',
           success:function(result){
-              console.log(result.tweets.statuses[i].text);
-              
-            //   var twitterArray=[];
-            //   twitterArray.push(result); 
+            console.log(result); 
+            //   console.log(result.tweets.statuses.text);
+                
+        //        for (var indexArray=0; indexArray<results.tweet.statuses.length; itt )
 
           },
+
           data:{
                "search_term":"werewolves",
             //    "iso_language_code":"en",
