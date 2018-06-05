@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Bootstrap Example</title>
+    <title>Lycanthropia</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -12,25 +12,30 @@
 <body>
 
 
-<div class="container col-xs-12">
-    <div class="title jumbotron text-center">
-        <h1>Lycanthropia</h1>
-        <p>Werewolves of London</p>
+<div class="container">
+    <div class="jumbotron">
+        <div class="title container text-center">
+            <h1>Lycanthropia</h1>
+            <p>Werewolves of London</p>
+        </div>
     </div>
 
-    
-
-    <div id="tweets" class="col-xs-10 col-xs-offset-1 text-center">
+    <div id="tweets" class="col-xs-10 col-xs-offset-1 text-center well">
         <p>Tweets</p>
     </div>
-    <div id="videos" class="col-xs-10 col-xs-offset-1 text-center">
+    <div id="videos" class="col-xs-10 col-xs-offset-1 text-center well">
         <p>Videos</p>
     </div>
-        <div class="weatherContainer col-xs-10 col-xs-offset-1 text-center">
+        <div class="weatherContainer col-xs-10 col-xs-offset-1 text-center well">
             <div id="displayWeather">
 
             </div>
-            <input type="text" id="city" placeholder="enter city...">
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <i class="glyphicon glyphicon-search"></i>
+                    </span>
+                    <input type="text" id="city" class="form-control" placeholder="enter city...">
+                </div>
             <button id="weatherBtn">Search</button>
         </div>
 
