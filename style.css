@@ -9,6 +9,7 @@ body {
     background-position: center;
     background-color: black;
     background-repeat: no-repeat;
+    font-size: 18px;
 }
 
 .jumbotron {
@@ -22,7 +23,6 @@ body {
     border: 1px solid mediumpurple;
     border-radius: 4px;
     opacity: 0.6;
-    font-size: 2em;
     text-shadow: 0 0 75px mediumpurple;
     box-shadow: 0 0 50px mediumpurple;
 }
@@ -36,12 +36,14 @@ body {
     border: 1px solid mediumpurple;
     border-radius: 4px;
     box-shadow: 0 0 50px mediumpurple;
+    font-size: 130%;
 }
 
 #tweets, #news {
     overflow-y: scroll;
     height: 40vh;
     padding-top: 0;
+    font-size: 80%;
 }
 
 .weatherContainer {
@@ -61,7 +63,7 @@ button {
 }
 
 p {
-    font-size: 2em;
+    font-size: 130%;
 }
 
 #modalShadow{
