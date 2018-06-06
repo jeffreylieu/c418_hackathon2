@@ -76,12 +76,17 @@ p {
 
 #modalBody{
     margin: 10% auto 15% auto;
-    border: 1px solid mediumpurple;
+    /* border: 1px solid mediumpurple; */
     border-radius: 4px;
     width: 50%;
     height: 50%;   
     position:absolute; 
-    left: 25%;  
+    left: 25%;
+    color: red;  
+    font-size: 3rem;
+    font-family: 'Creepster', cursive;
+    text-align: center;
+    background-color: black;
 }
 
 .borderClass{
@@ -94,11 +99,18 @@ p {
     height: 25%;
 }
 
-.FullMoonWarningDivText{
-    color: white; 
-}
+/* .FullMoonWarningDivText{
+    color: lime;
+} */
 
 #adSpace > img{
     width: 100%;
 }
 
+.modalImage{
+    height: 100%;
+    width: 100%;
+    background-repeat: no-repeat;
+    /* border: 1px solid mediumpurple; */
+    border-top: none;
+}
