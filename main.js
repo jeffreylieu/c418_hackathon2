@@ -178,9 +178,10 @@ var moonArr={
         width: "200",
         height: "200"
     }
-}
+};
     var moon= $("#moonPhases");
-    var moonImage=$("<img>").attr(moonArr[moonPhase].src); 
+    var moonImage=$("<img>").attr(moonArr[moonPhase].src);
+    var moonDate = $("<div>").addClass("text-center").appendTo("#moonPhases");
 
     moon.append(moonImage);
 }
