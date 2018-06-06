@@ -1,6 +1,8 @@
 
 $(document).ready(startApp);
 
+var twitterArray=[]; 
+
 function startApp(){
 getWeatherData();
 attachEventforWeather();
@@ -20,8 +22,8 @@ function getWeatherData(){
    var cityInput = $('#city').val(); // grabbing input value from DOM
    var temperatureUnit = '&units=imperial' // converting to fareinheit
    var apiKey = '&appid=9dd197942a0bc259df00f2207629ec26' // API key
-    var baseUrl = 'http://api.openweathermap.org/data/2.5/forecast?q=';
-    var url = baseUrl + cityInput + temperatureUnit + apiKey;
+   var baseUrl = 'http://api.openweathermap.org/data/2.5/forecast?q=';
+   var url = baseUrl + cityInput + temperatureUnit + apiKey;
 
    if(cityInput){
     $.ajax({
@@ -34,8 +36,9 @@ function getWeatherData(){
             $('#displayWeather').text(displayWeatherInfo + ' Degrees')
 
             if(displayWeatherInfo < 100){
-                showWolfModal();
-                setTimeout(closeWolfModal,2000); 
+                showWolfModal(); 
+                $('#city').val('')
+                setTimeout(closeWolfModal,3000);
                 // alert('who let the wolves out?'); //replace with modal later
             }
         },
@@ -61,8 +64,6 @@ function setTimeOutForModal(){
     setTimeout(closeWolfModal,2000); 
 }
 
-var twitterArray=[]; 
-
 function twitterRequest (){
     var twitterObject={
           url: ' https://s-apis.learningfuze.com/hackathon/twitter/index.php',
@@ -73,7 +74,9 @@ function twitterRequest (){
             var twitterData=(result.tweets.statuses);
             for (var index=0; index<twitterData.length; index++){
                 twitterArray.push(result.tweets.statuses[index].text); 
-                $("#tweets").append(twitterArray[index]); 
+                var twitterDiv= $("<div>").addClass("borderClass");
+                $("#tweets").append(twitterDiv)
+                $(twitterDiv).append(twitterArray[index]); 
             }
 
           },
@@ -149,31 +152,36 @@ function getMoonDataDate() {
     $.ajax(ajaxConfig)
 }
 
-function displayMoon() {
-    var moonArr=[
-        {
-            src: "images/firstquarter.jpg",
-            id: "moonID",
-            width: "200",
-            height: "200"
-        },
-        {
-            src: "images/newmoon.png",
-            id: "moonID",
-            width: "200",
-            height: "200"
-        },
-        {
-            src: "images/fullmoon.jpg",
-            id: "moonID",
-            width: "200",
-            height: "200"
-        },
-        {
-            src: "images/lastquartermoon.jpg",
-            id: "moonID",
-            width: "200",
-            height: "200"
-        }
-    ];
+
+function displayMoon(moonPhase) {
+var moonArr={
+    "First Quarter": {
+        src: "images/firstquarter.jpg",
+        id: "moonID",
+        width: "200",
+        height: "200"
+    },
+    "New Moon": {
+        src: "images/newmoon.png",
+        id: "moonID",
+        width: "200",
+        height: "200"
+    },
+    "Last Quarter": {
+        src: "images/fullmoon.jpg",
+        id: "moonID",
+        width: "200",
+        height: "200"
+    },
+    "Full Moon":{
+        src: "images/lastquartermoon.jpg",
+        id: "moonID",
+        width: "200",
+        height: "200"
+    }
+}
+    var moon= $("#moonPhases");
+    var moonImage=$("<img>").attr(moonArr[moonPhase].src); 
+
+    moon.append(moonImage);
 }
