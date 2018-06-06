@@ -41,6 +41,7 @@ body {
 #tweets {
     overflow-y: scroll;
     height: 40vh;
+    padding-top: 0;
 }
 
 .weatherContainer {
@@ -60,7 +61,7 @@ button {
 }
 
 p {
-    font-size: 20px;
+    font-size: 130%;
 }
 
 #modalShadow{
@@ -102,3 +103,9 @@ p {
     width: 100%;
 }
 
+#tweetTitle {
+    background-color: black;
+    position: sticky;
+    top: 0;
+    width: 100%;
+}
