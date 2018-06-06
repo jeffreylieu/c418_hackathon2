@@ -68,13 +68,9 @@ p {
 }
 .borderClass{
     border: 2px solid lime;
-}
     background-image: url('images/jump.gif');
     background-repeat: no-repeat;
 }
 
-/* #modalBody{
 
-    height: 100%
-} */
 

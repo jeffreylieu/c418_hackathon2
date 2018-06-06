@@ -150,36 +150,37 @@ function play(){
     audio.play();
 }
 
-function displayMoon() {
-var moonArr=[
-    {
+function displayMoon(moonPhase) {
+var moonArr={
+    "First Quarter": {
         src: "images/firstquarter.jpg",
         id: "moonID",
         width: "200",
         height: "200"
     },
-    {
+    "New Moon": {
         src: "images/newmoon.png",
         id: "moonID",
         width: "200",
         height: "200"
     },
-    {
+    "Last Quarter": {
         src: "images/fullmoon.jpg",
         id: "moonID",
         width: "200",
         height: "200"
     },
-    {
+    "Full Moon":{
         src: "images/lastquartermoon.jpg",
         id: "moonID",
         width: "200",
         height: "200"
     }
-]
+}
+    var moon= $("#moonPhases");
+    var moonImage=$("<img>").attr(moonArr[moonPhase].src); 
 
-
-
+    moon.append(moonImage);
 }
 
 
