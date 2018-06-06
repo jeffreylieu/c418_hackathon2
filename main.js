@@ -1,15 +1,14 @@
 
 $(document).ready(startApp);
 
-var twitterArray=[];
 var moonPhaseDate = [];
 
 function startApp(){
 getWeatherData();
 attachEventforWeather();
 twitterRequest();
-//getMoonData();
 getMoonDataDate();
+startImageCycle(2000);
 }
 function attachEventforWeather(){
     $("#weatherBtn").on("click", getWeatherData  )
@@ -32,20 +31,16 @@ function getWeatherData(){
         type: 'GET',
         dataType: 'json',
         success: function(response){
-            console.log('Weather called');
             var displayWeatherInfo = Math.floor(response.list[0].main.temp)
             $('#displayWeather').text(displayWeatherInfo + ' Degrees')
 
             if(displayWeatherInfo < 100){
                 showWolfModal(); 
                 $('#city').val('')
-                // $('#displayWeather').text('');
                 setTimeout(closeWolfModal,3000);
-                // alert('who let the wolves out?'); //replace with modal later
             }
         },
         error: function(err){
-            console.log('failed');
         }
     });
    }
@@ -62,11 +57,8 @@ function closeWolfModal(){
     document.querySelector("#modalShadow").style.display = "none";
 }
 
-function setTimeOutForModal(){
-    setTimeout(closeWolfModal,2000); 
-}
-
 function twitterRequest (){
+    var twitterArray=[];
     var twitterObject={
           url: ' https://s-apis.learningfuze.com/hackathon/twitter/index.php',
           method: 'get', 
@@ -96,26 +88,7 @@ function twitterRequest (){
     $.ajax(twitterObject); 
 }
 
-/*function getMoonData(year = (new Date()).getFullYear()) {
-
-    var ajaxConfig = {
-        url: 'http://api.usno.navy.mil/moon/phase',
-        method: "GET",
-        dataType: 'JSON',
-        data: {
-            year
-        },
-
-        success: function (result) {
-            console.log('2) AJAX Success function called, with the following result:', result);
-
-        }
-    };
-    $.ajax(ajaxConfig)
-}*/
-//updated moon data function so it grabs the current moon phase
 function getMoonDataDate() {
-
     var today = new Date();
     var dd = today.getDate();
 
@@ -191,3 +164,40 @@ var moonArr={
     var moonImage=$("<img>").attr('src',moonArr[moonPhase].src);
     moon.append(moonImage, moonDateDiv, moonPhaseDate);
 }
+
+function startImageCycle(timeBetweenCycle = 5000){
+    var adArray = [
+        {src: "images/ads/Werelix.png"},
+        {src: "images/ads/bayer.png"},
+        {src: "images/ads/whitestrips.png"},
+        {src: "images/ads/justformen.png"},
+        {src: "images/ads/datingsite.png"}
+    ];
+    var currentImage = 0;
+    var timer = null;
+
+    function cycleImageAndDisplay(){
+        var adDivCreate=$("<img>").attr('src',adArray[currentImage].src);
+        $("#adSpace").empty().append(adDivCreate);
+        currentImage++;
+        if(currentImage === adArray.length){
+            currentImage=0;
+        }
+    }
+    cycleImageAndDisplay();
+    timer = setInterval(cycleImageAndDisplay, timeBetweenCycle);
+}
+
+// function imageAddArray() {
+//
+//
+//     for(var imageIndex = 0; imageIndex < adArray.length; imageIndex++){
+//         var adImages = setInterval(adArray[imageIndex],5000);
+//         console.log(adArray);
+//
+//         var adDivCreate=$("<img>").attr('src',adImages.src);
+//         $("#adSpace").append(adDivCreate);
+//     }
+//
+//
+// }
