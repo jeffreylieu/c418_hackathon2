@@ -31,11 +31,21 @@ body {
     background-color: black;
     font-family: 'Creepster', cursive;
     color: lime;
-    opacity: 0.5;
+    opacity: 0.9;
     text-shadow: 0 0 75px mediumpurple;
     border: 1px solid mediumpurple;
     border-radius: 4px;
     box-shadow: 0 0 50px mediumpurple;
+}
+
+.weatherContainer {
+
+    font-size: 24px;
+
+}
+#city {
+    color: black;
+    font-size: 24px;
 }
 
 button {
