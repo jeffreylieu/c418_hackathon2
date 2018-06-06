@@ -1,7 +1,8 @@
 
 $(document).ready(startApp);
 
-var twitterArray=[]; 
+var twitterArray=[];
+var moonPhaseDate = [];
 
 function startApp(){
 getWeatherData();
@@ -149,7 +150,9 @@ function getMoonDataDate() {
             var moonPhase = (result.phasedata[0].phase);
             var date = (result.phasedata[0].date);
             var time = (result.phasedata[0].time);
-            displayMoon(moonPhase); 
+            moonPhaseDate.push(date, ", ", time, ", Moon Phase: ", moonPhase);
+
+            displayMoon(moonPhase);
         }
     };
     $.ajax(ajaxConfig)
@@ -184,7 +187,7 @@ var moonArr={
     }
 };
     var moon= $("#moonPhases");
-    var moonDate = $("<div>").addClass("text-center").appendTo("#moonPhases");
-    var moonImage=$("<img>").attr('src',moonArr[moonPhase].src); 
-    moon.append(moonImage);
+    var moonDateDiv = $("<div>").addClass("moonDateDiv text-center").appendTo("#moonPhases");
+    var moonImage=$("<img>").attr('src',moonArr[moonPhase].src);
+    moon.append(moonImage, moonDateDiv, moonPhaseDate);
 }
