@@ -101,4 +101,26 @@ p {
 #adSpace > img{
     width: 100%;
 }
+#news {
+    overflow-y: scroll;
+    height: 40vh;
+    background-color: black;
+    font-family: 'Creepster', cursive;
+    color: lime;
+    opacity: 0.9;
+    text-shadow: 0 0 75px mediumpurple;
+    border: 1px solid mediumpurple;
+    border-radius: 4px;
+    box-shadow: 0 0 50px mediumpurple;
+}
+.newsPic {
+    width: 50%;
+}
+
+.newsDescription {
+    font-family: Arial;
+}
+.news {
+    margin-bottom: 10%;
+}
 
