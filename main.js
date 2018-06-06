@@ -1,7 +1,8 @@
 
 $(document).ready(startApp);
 
-var twitterArray=[]; 
+var twitterArray=[];
+var moonPhaseDate = [];
 
 function startApp(){
 getWeatherData();
@@ -75,19 +76,21 @@ function twitterRequest (){
             var twitterData=(result.tweets.statuses);
             for (var index=0; index<twitterData.length; index++){
                 twitterArray.push(result.tweets.statuses[index].text); 
-                var twitterDiv= $("<div>").addClass("borderClass");
+                var twitterDiv= $("<div>", {class : "borderClass"}); 
+                var twitterIcon=$("<i>",{class:"fab fa-twitter", src:"images/twitter.svg"}); 
                 $("#tweets").append(twitterDiv)
-                $(twitterDiv).append(twitterArray[index]); 
+                $(twitterDiv).append(twitterIcon, '   ', twitterArray[index]); 
             }
 
           },
 
           data:{
                "search_term":"werewolves",
-                "iso_language_code":"en",         
+                "hashtags":"werewolf",        
           },    
           metadata:{
-              "iso_language_code":"en"
+              "iso_language_code":"en",
+              "result_type": "recent",
           }
     }
     $.ajax(twitterObject); 
@@ -147,7 +150,9 @@ function getMoonDataDate() {
             var moonPhase = (result.phasedata[0].phase);
             var date = (result.phasedata[0].date);
             var time = (result.phasedata[0].time);
-            displayMoon(moonPhase); 
+            moonPhaseDate.push(date, ", ", time, ", Moon Phase: ", moonPhase);
+
+            displayMoon(moonPhase);
         }
     };
     $.ajax(ajaxConfig)
@@ -182,7 +187,7 @@ var moonArr={
     }
 };
     var moon= $("#moonPhases");
-    var moonDate = $("<div>").addClass("text-center").appendTo("#moonPhases");
-    var moonImage=$("<img>").attr('src',moonArr[moonPhase].src); 
-    moon.append(moonImage);
+    var moonDateDiv = $("<div>").addClass("moonDateDiv text-center").appendTo("#moonPhases");
+    var moonImage=$("<img>").attr('src',moonArr[moonPhase].src);
+    moon.append(moonImage, moonDateDiv, moonPhaseDate);
 }
