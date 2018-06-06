@@ -73,7 +73,7 @@ function twitterRequest (){
                 var twitterDiv= $("<div>", {class : "borderClass"}); 
                 var twitterIcon=$("<i>",{class:"fab fa-twitter", src:"images/twitter.svg"}); 
                 $("#tweets").append(twitterDiv);
-                $(twitterDiv).append(twitterIcon, '   ', twitterArray[index]); 
+                $(twitterDiv).append(twitterIcon, '   ', twitterArray[index]);
             }
 
           },
