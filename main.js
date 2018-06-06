@@ -180,9 +180,9 @@ var moonArr={
         width: "200",
         height: "200"
     }
-}
+};
     var moon= $("#moonPhases");
+    var moonDate = $("<div>").addClass("text-center").appendTo("#moonPhases");
     var moonImage=$("<img>").attr('src',moonArr[moonPhase].src); 
-
     moon.append(moonImage);
 }

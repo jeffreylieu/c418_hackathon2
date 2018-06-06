@@ -38,6 +38,16 @@ body {
     box-shadow: 0 0 50px mediumpurple;
 }
 
+.weatherContainer {
+
+    font-size: 24px;
+
+}
+#city {
+    color: black;
+    font-size: 24px;
+}
+
 button {
     background-color: black;
     border-radius: 8px;
