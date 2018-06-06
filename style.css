@@ -1,7 +1,7 @@
 
 
 body {
-    margin: 0;
+    margin-bottom: 30vh;
     align-content: center;
     background-size: cover;
     background-image: url(images/background.png);
@@ -94,9 +94,6 @@ img {
     height: 25%;
 }
 
-
-
-
-
-
-
+#adSpace > img{
+    width: 100%;
+}
