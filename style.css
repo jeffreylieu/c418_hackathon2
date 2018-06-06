@@ -77,12 +77,17 @@ p {
 
 #modalBody{
     margin: 10% auto 15% auto;
-    border: 1px solid mediumpurple;
+    /* border: 1px solid mediumpurple; */
     border-radius: 4px;
     width: 50%;
     height: 50%;   
     position:absolute; 
-    left: 25%;  
+    left: 25%;
+    color: red;  
+    font-size: 3rem;
+    font-family: 'Creepster', cursive;
+    text-align: center;
+    background-color: black;
 }
 
 .borderClass{
@@ -95,12 +100,27 @@ p {
     height: 25%;
 }
 
-.FullMoonWarningDivText{
-    color: white; 
-}
+/* .FullMoonWarningDivText{
+    color: lime;
+} */
 
 #adSpace > img{
     width: 100%;
+}
+#news {
+    overflow-y: scroll;
+    height: 40vh;
+    background-color: black;
+    font-family: 'Creepster', cursive;
+    color: lime;
+    opacity: 0.9;
+    text-shadow: 0 0 75px mediumpurple;
+    border: 1px solid mediumpurple;
+    border-radius: 4px;
+    box-shadow: 0 0 50px mediumpurple;
+}
+.newsPic {
+    width: 50%;
 }
 
 #tweetTitle {
@@ -108,4 +128,18 @@ p {
     position: sticky;
     top: 0;
     width: 100%;
+
+.newsDescription {
+    font-family: Arial;
+}
+.news {
+    margin-bottom: 10%;
+}
+
+.modalImage{
+    height: 100%;
+    width: 100%;
+    background-repeat: no-repeat;
+    /* border: 1px solid mediumpurple; */
+    border-top: none;
 }
