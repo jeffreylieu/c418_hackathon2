@@ -13,7 +13,10 @@ getMoonDataDate();
 function attachEventforWeather(){
     $("#weatherBtn").on("click", getWeatherData  )
 }
-
+function play(){
+    var audio = document.getElementById("audio");
+    audio.play();
+}
 function getWeatherData(){
     
    var cityInput = $('#city').val(); // grabbing input value from DOM
@@ -140,16 +143,15 @@ function getMoonDataDate() {
 
         success: function (result) {
             console.log('2) AJAX Success function called, with the following result:', result);
-
+            debugger;
+            var moonPhase = (result.phasedata[0].phase);
+            var date = (result.phasedata[0].date);
+            var time = (result.phasedata[0].time);
         }
     };
     $.ajax(ajaxConfig)
 }
 
-function play(){
-    var audio = document.getElementById("audio");
-    audio.play();
-}
 
 function displayMoon(moonPhase) {
 var moonArr={
@@ -183,5 +185,3 @@ var moonArr={
 
     moon.append(moonImage);
 }
-
-
