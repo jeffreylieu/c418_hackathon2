@@ -38,7 +38,7 @@ function getWeatherData(){
             if(displayWeatherInfo < 100){
                 showWolfModal(); 
                 $('#city').val('')
-                $('#displayWeather').text('');
+                // $('#displayWeather').text('');
                 setTimeout(closeWolfModal,3000);
                 // alert('who let the wolves out?'); //replace with modal later
             }
