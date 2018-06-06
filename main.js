@@ -8,6 +8,7 @@ getWeatherData();
 attachEventforWeather();
 twitterRequest();
 getMoonDataDate();
+getNews();
 startImageCycle(2000);
 }
 
@@ -196,3 +197,40 @@ function startImageCycle(timeBetweenCycle = 5000){
 }
 
 
+function getNews() {
+
+    var ajaxConfig ={
+        url: 'https://newsapi.org/v2/top-headlines',
+        data: {
+            sources: 'bbc-news',
+            apiKey: 'a301402e78e34cf99746d40c3083b2cb'
+        },
+        dataType: 'json',
+        success: function (response) {
+            console.log(response);
+            var newsData = response.articles;
+            for (var index=0; index<newsData.length; index++) {
+                var description = response.articles[index].description;
+                var title = response.articles[index].title;
+                var img = response.articles[index].urlToImage;
+                var link = response.articles[index].url;
+
+                var makeDivforNews = $("<div>").addClass("news");
+                var makeTitle = $("<p>").addClass("newsTitle").text(title);
+                var makeDescription = $("<div>").addClass("newsDescription").text(description);
+                var makeImg = $("<img>").addClass("newsPic").attr("src", img);
+                var makeLink = $("<a>").attr("href", link).attr("target", "__blank");
+                makeLink.append(makeImg);
+
+
+                makeDivforNews.append(makeTitle, makeLink, makeDescription);
+                $("#news").append(makeDivforNews);
+
+
+            }
+
+
+        }
+    };
+    $.ajax(ajaxConfig);
+}
