@@ -7,8 +7,8 @@ function startApp(){
 getWeatherData();
 attachEventforWeather();
 twitterRequest();
-//getMoonData();
 getMoonDataDate();
+startImageCycle(2000);
 }
 
 function attachEventforWeather(){
@@ -32,7 +32,6 @@ function getWeatherData(){
         type: 'GET',
         dataType: 'json',
         success: function(response){
-            console.log('Weather called');
             var displayWeatherInfo = Math.floor(response.list[0].main.temp)
             $('#displayWeather').text(displayWeatherInfo + ' Degrees')
             if(displayWeatherInfo < 80){
@@ -44,7 +43,6 @@ function getWeatherData(){
             }
         },
         error: function(err){
-            console.log('failed');
         }
     });
    }
@@ -55,7 +53,7 @@ function closeWolfModal(){
 }
 
 function twitterRequest (){
-    var twitterArray=[]; 
+    var twitterArray=[];
     var twitterObject={
           url: ' https://s-apis.learningfuze.com/hackathon/twitter/index.php',
           method: 'get', 
@@ -84,7 +82,6 @@ function twitterRequest (){
     }
     $.ajax(twitterObject); 
 }
-
 
 function getMoonDataDate() {
     var today = new Date();
@@ -120,7 +117,6 @@ function getMoonDataDate() {
     };
     $.ajax(ajaxConfig)
 }
-
 
 function displayMoon(moonPhase) {
 var moonArr={
@@ -169,3 +165,28 @@ function showFullMoonModal(){
     $("#modalBody").append(fullMoonImage); 
     $("#modalShadow").show();  
 }
+
+function startImageCycle(timeBetweenCycle = 5000){
+    var adArray = [
+        {src: "images/ads/Werelix.png"},
+        {src: "images/ads/bayer.png"},
+        {src: "images/ads/whitestrips.png"},
+        {src: "images/ads/justformen.png"},
+        {src: "images/ads/datingsite.png"}
+    ];
+    var currentImage = 0;
+    var timer = null;
+
+    function cycleImageAndDisplay(){
+        var adDivCreate=$("<img>").attr('src',adArray[currentImage].src);
+        $("#adSpace").empty().append(adDivCreate);
+        currentImage++;
+        if(currentImage === adArray.length){
+            currentImage=0;
+        }
+    }
+    cycleImageAndDisplay();
+    timer = setInterval(cycleImageAndDisplay, timeBetweenCycle);
+}
+
+

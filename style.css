@@ -1,7 +1,7 @@
 
 
 body {
-    margin: 0;
+    margin-bottom: 5vh;
     align-content: center;
     background-size: cover;
     background-image: url(images/background.png);
@@ -88,9 +88,8 @@ p {
     border: 2px solid lime;
     padding: 5%;
 }
-/* 
-only do one height or width change the selector be specific */
-img {
+
+#moonPhases > img {
     width: 25%;
     height: 25%;
 }
@@ -99,4 +98,7 @@ img {
     color: white; 
 }
 
+#adSpace > img{
+    width: 100%;
+}
 
