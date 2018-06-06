@@ -1,1 +1,79 @@
-/*css*/
+
+
+body {
+    margin: 0;
+    align-content: center;
+    background-size: cover;
+    background-image: url(images/background.png);
+    background-attachment: fixed;
+    background-position: center;
+    background-color: black;
+    background-repeat: no-repeat;
+}
+
+.jumbotron {
+    background-color: black;
+    font-family: 'Creepster', cursive;
+    position: relative;
+    top: 20%;
+    left: 7.5%;
+    width: 85%;
+    color: lime;
+    border: 1px solid mediumpurple;
+    border-radius: 4px;
+    opacity: 0.6;
+    font-size: 2em;
+    text-shadow: 0 0 75px mediumpurple;
+    box-shadow: 0 0 50px mediumpurple;
+}
+
+#tweets, #videos, .weatherContainer {
+    background-color: black;
+    font-family: 'Creepster', cursive;
+    color: lime;
+    opacity: 0.5;
+    text-shadow: 0 0 75px mediumpurple;
+    border: 1px solid mediumpurple;
+    border-radius: 4px;
+    box-shadow: 0 0 50px mediumpurple;
+}
+
+button {
+    background-color: black;
+    border-radius: 8px;
+    border: 3px solid mediumpurple;
+}
+
+p {
+    font-size: 20px;
+}
+
+#modalShadow{
+    position:fixed; 
+    left: 0; 
+    top: 0;
+    width: 100vw; 
+    height: 100vh;
+    background-color:rgba(0,0,0,.4); 
+    display: none; 
+}
+#modalBody{
+
+    background-image: url("images/werewolfjump2.gif");
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: 10% auto 15% auto;
+    border: 1px solid mediumpurple;
+    border-radius: 4px;
+    width: 50%;
+    height: 50%;
+    
+}
+.borderClass{
+    border: 2px solid lime;
+
+}
+
+
+
+
