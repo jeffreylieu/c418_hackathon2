@@ -75,19 +75,21 @@ function twitterRequest (){
             var twitterData=(result.tweets.statuses);
             for (var index=0; index<twitterData.length; index++){
                 twitterArray.push(result.tweets.statuses[index].text); 
-                var twitterDiv= $("<div>").addClass("borderClass");
+                var twitterDiv= $("<div>", {class : "borderClass"}); 
+                var twitterIcon=$("<i>",{class:"fab fa-twitter", src:"images/twitter.svg"}); 
                 $("#tweets").append(twitterDiv)
-                $(twitterDiv).append(twitterArray[index]); 
+                $(twitterDiv).append(twitterIcon, '   ', twitterArray[index]); 
             }
 
           },
 
           data:{
                "search_term":"werewolves",
-                "iso_language_code":"en",         
+                "hashtags":"werewolf",        
           },    
           metadata:{
-              "iso_language_code":"en"
+              "iso_language_code":"en",
+              "result_type": "recent",
           }
     }
     $.ajax(twitterObject); 
