@@ -38,6 +38,11 @@ body {
     box-shadow: 0 0 50px mediumpurple;
 }
 
+#tweets {
+    overflow-y: scroll;
+    height: 40vh;
+}
+
 .weatherContainer {
 
     font-size: 24px;
@@ -81,10 +86,13 @@ p {
 }
 .borderClass{
     border: 2px solid lime;
+    padding: 5%;
 }
 
-
-
+img {
+    width: 25%;
+    height: 25%;
+}
 
 
 
