@@ -27,7 +27,7 @@ body {
     box-shadow: 0 0 50px mediumpurple;
 }
 
-#tweets, #videos, .weatherContainer {
+#tweets, #moonPhases, .weatherContainer {
     background-color: black;
     font-family: 'Creepster', cursive;
     color: lime;
