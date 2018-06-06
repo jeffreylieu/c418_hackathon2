@@ -38,6 +38,7 @@ function getWeatherData(){
             if(displayWeatherInfo < 100){
                 showWolfModal(); 
                 $('#city').val('')
+                // $('#displayWeather').text('');
                 setTimeout(closeWolfModal,3000);
                 // alert('who let the wolves out?'); //replace with modal later
             }
@@ -146,6 +147,7 @@ function getMoonDataDate() {
             var moonPhase = (result.phasedata[0].phase);
             var date = (result.phasedata[0].date);
             var time = (result.phasedata[0].time);
+            displayMoon(moonPhase); 
         }
     };
     $.ajax(ajaxConfig)
@@ -167,21 +169,20 @@ var moonArr={
         height: "200"
     },
     "Last Quarter": {
-        src: "images/fullmoon.jpg",
+        src: "images/lastquartermoon.jpg",
         id: "moonID",
         width: "200",
         height: "200"
     },
     "Full Moon":{
-        src: "images/lastquartermoon.jpg",
+        src: "images/fullmoon.jpg",
         id: "moonID",
         width: "200",
         height: "200"
     }
 };
     var moon= $("#moonPhases");
-    var moonImage=$("<img>").attr(moonArr[moonPhase].src);
     var moonDate = $("<div>").addClass("text-center").appendTo("#moonPhases");
-
+    var moonImage=$("<img>").attr('src',moonArr[moonPhase].src); 
     moon.append(moonImage);
 }
