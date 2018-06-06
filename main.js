@@ -37,7 +37,7 @@ function getWeatherData(){
             if(displayWeatherInfo < 80){
                var modalImage=$('<img src="images/werewolfjump2.gif">').addClass("modalImage")
                $("#modalBody").append(modalImage); 
-                $("#modalShadow").show();
+                showWolfModal();
                 $('#city').val('')
                 setTimeout(closeWolfModal,3000);
             }
@@ -48,8 +48,14 @@ function getWeatherData(){
    }
 }
 
+function showWolfModal(){
+    $("#modalShadow").show();
+}
+
 function closeWolfModal(){
-   $("#modalShadow").hide(); 
+   $("#modalBody").empty();
+   $('#modalShadow').hide(); 
+
 }
 
 function twitterRequest (){
