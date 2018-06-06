@@ -10,21 +10,22 @@ twitterRequest();
 getMoonDataDate();
 startImageCycle(2000);
 }
+
 function attachEventforWeather(){
     $("#weatherBtn").on("click", getWeatherData  )
 }
+
 function play(){
     var audio = document.getElementById("audio");
     audio.play();
 }
-function getWeatherData(){
-    
+
+function getWeatherData(){  
    var cityInput = $('#city').val(); // grabbing input value from DOM
    var temperatureUnit = '&units=imperial' // converting to fareinheit
    var apiKey = '&appid=9dd197942a0bc259df00f2207629ec26' // API key
    var baseUrl = 'http://api.openweathermap.org/data/2.5/forecast?q=';
    var url = baseUrl + cityInput + temperatureUnit + apiKey;
-
    if(cityInput){
     $.ajax({
         url: url,
@@ -33,9 +34,10 @@ function getWeatherData(){
         success: function(response){
             var displayWeatherInfo = Math.floor(response.list[0].main.temp)
             $('#displayWeather').text(displayWeatherInfo + ' Degrees')
-
-            if(displayWeatherInfo < 100){
-                showWolfModal(); 
+            if(displayWeatherInfo < 80){
+               var modalImage=$('<img src="images/werewolfjump2.gif">').addClass("modalImage")
+               $("#modalBody").append(modalImage); 
+                $("#modalShadow").show();
                 $('#city').val('')
                 setTimeout(closeWolfModal,3000);
             }
@@ -44,17 +46,10 @@ function getWeatherData(){
         }
     });
    }
-
-}
-
-function showWolfModal(){
-    document.querySelector("#modalShadow").style.display = "block";
-
-
 }
 
 function closeWolfModal(){
-    document.querySelector("#modalShadow").style.display = "none";
+   $("#modalShadow").hide(); 
 }
 
 function twitterRequest (){
@@ -70,7 +65,7 @@ function twitterRequest (){
                 twitterArray.push(result.tweets.statuses[index].text); 
                 var twitterDiv= $("<div>", {class : "borderClass"}); 
                 var twitterIcon=$("<i>",{class:"fab fa-twitter", src:"images/twitter.svg"}); 
-                $("#tweets").append(twitterDiv)
+                $("#tweets").append(twitterDiv);
                 $(twitterDiv).append(twitterIcon, '   ', twitterArray[index]); 
             }
 
@@ -91,24 +86,18 @@ function twitterRequest (){
 function getMoonDataDate() {
     var today = new Date();
     var dd = today.getDate();
-
     var mm = today.getMonth()+1;
     var yyyy = today.getFullYear();
     if(dd<10)
     {
         dd='0'+dd;
     }
-
     if(mm<10)
     {
         mm='0'+mm;
     }
-
     today = mm+'/'+dd+'/'+yyyy;
     console.log(today);
-
-
-
     var ajaxConfig = {
         url: 'http://api.usno.navy.mil/moon/phase',
         method: "GET",
@@ -117,20 +106,17 @@ function getMoonDataDate() {
             date: today,
             nump: 1
         },
-
         success: function (result) {
             console.log('2) AJAX Success function called, with the following result:', result);
             var moonPhase = (result.phasedata[0].phase);
             var date = (result.phasedata[0].date);
             var time = (result.phasedata[0].time);
             moonPhaseDate.push(date, ", ", time, ", Moon Phase: ", moonPhase);
-
             displayMoon(moonPhase);
         }
     };
     $.ajax(ajaxConfig)
 }
-
 
 function displayMoon(moonPhase) {
 var moonArr={
@@ -163,6 +149,21 @@ var moonArr={
     var moonDateDiv = $("<div>").addClass("moonDateDiv text-center").appendTo("#moonPhases");
     var moonImage=$("<img>").attr('src',moonArr[moonPhase].src);
     moon.append(moonImage, moonDateDiv, moonPhaseDate);
+    if (moonPhase === "Full Moon"){
+        showFullMoonModal(); 
+        setTimeout(closeWolfModal,3000);
+    }
+}
+
+function showFullMoonModal(){
+    var fullMoonImage=$('<img src="images/fullmoon.gif">').addClass("modalImage")
+    var warningDiv=$("<div>",{
+        text:"Better Cancel Those Dinner Plans it is a Full Moon Tonight!",
+        class:"FullMoonWarningDivText"
+        });
+    $("#modalBody").text("Better Cancel Those Dinner Plans it is a Full Moon Tonight!"); 
+    $("#modalBody").append(fullMoonImage); 
+    $("#modalShadow").show();  
 }
 
 function startImageCycle(timeBetweenCycle = 5000){
@@ -188,16 +189,4 @@ function startImageCycle(timeBetweenCycle = 5000){
     timer = setInterval(cycleImageAndDisplay, timeBetweenCycle);
 }
 
-// function imageAddArray() {
-//
-//
-//     for(var imageIndex = 0; imageIndex < adArray.length; imageIndex++){
-//         var adImages = setInterval(adArray[imageIndex],5000);
-//         console.log(adArray);
-//
-//         var adDivCreate=$("<img>").attr('src',adImages.src);
-//         $("#adSpace").append(adDivCreate);
-//     }
-//
-//
-// }
+
