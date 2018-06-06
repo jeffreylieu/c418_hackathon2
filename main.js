@@ -143,7 +143,6 @@ function getMoonDataDate() {
 
         success: function (result) {
             console.log('2) AJAX Success function called, with the following result:', result);
-            debugger;
             var moonPhase = (result.phasedata[0].phase);
             var date = (result.phasedata[0].date);
             var time = (result.phasedata[0].time);
