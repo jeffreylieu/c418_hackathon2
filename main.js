@@ -40,7 +40,7 @@ function getWeatherData(){
                $("#modalBody").append(modalImage); 
                 $("#modalShadow").show();
                 $('#city').val('')
-                // setTimeout(closeWolfModal,3000);
+                setTimeout(closeWolfModal,3000);
             }
         },
         error: function(err){
@@ -155,7 +155,7 @@ var moonArr={
     moon.append(moonImage, moonDateDiv, moonPhaseDate);
     if (moonPhase === "Full Moon"){
         showFullMoonModal(); 
-     // setTimeout(closeWolfModal,3000);
+        setTimeout(closeWolfModal,3000);
     }
 }
 
