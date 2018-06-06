@@ -89,7 +89,7 @@ p {
     padding: 5%;
 }
 
-img {
+#moonPhases > img {
     width: 25%;
     height: 25%;
 }
