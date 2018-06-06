@@ -38,7 +38,7 @@ body {
     box-shadow: 0 0 50px mediumpurple;
 }
 
-#tweets {
+#tweets, #news {
     overflow-y: scroll;
     height: 40vh;
     padding-top: 0;
@@ -61,7 +61,7 @@ button {
 }
 
 p {
-    font-size: 130%;
+    font-size: 2em;
 }
 
 #modalShadow{
@@ -123,14 +123,15 @@ p {
     width: 50%;
 }
 
-#tweetTitle {
+#tweetTitle , #newsTitle {
     background-color: black;
     position: sticky;
     top: 0;
     width: 100%;
+}
 
 .newsDescription {
-    font-family: Arial;
+    font-family: Arial, Helvetica, sans-serif;
 }
 .news {
     margin-bottom: 10%;
