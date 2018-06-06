@@ -1,7 +1,7 @@
 
 $(document).ready(startApp);
 
-var twitterArray=[]; 
+var moonPhaseDate = [];
 
 function startApp(){
 getWeatherData();
@@ -10,18 +10,22 @@ twitterRequest();
 //getMoonData();
 getMoonDataDate();
 }
+
 function attachEventforWeather(){
     $("#weatherBtn").on("click", getWeatherData  )
 }
 
-function getWeatherData(){
-    
+function play(){
+    var audio = document.getElementById("audio");
+    audio.play();
+}
+
+function getWeatherData(){  
    var cityInput = $('#city').val(); // grabbing input value from DOM
    var temperatureUnit = '&units=imperial' // converting to fareinheit
    var apiKey = '&appid=9dd197942a0bc259df00f2207629ec26' // API key
    var baseUrl = 'http://api.openweathermap.org/data/2.5/forecast?q=';
    var url = baseUrl + cityInput + temperatureUnit + apiKey;
-
    if(cityInput){
     $.ajax({
         url: url,
@@ -31,12 +35,12 @@ function getWeatherData(){
             console.log('Weather called');
             var displayWeatherInfo = Math.floor(response.list[0].main.temp)
             $('#displayWeather').text(displayWeatherInfo + ' Degrees')
-
-            if(displayWeatherInfo < 100){
-                showWolfModal(); 
+            if(displayWeatherInfo < 80){
+               var modalImage=$('<img src="images/werewolfjump2.gif">').addClass("modalImage")
+               $("#modalBody").append(modalImage); 
+                $("#modalShadow").show();
                 $('#city').val('')
-                setTimeout(closeWolfModal,3000);
-                // alert('who let the wolves out?'); //replace with modal later
+                // setTimeout(closeWolfModal,3000);
             }
         },
         error: function(err){
@@ -44,24 +48,14 @@ function getWeatherData(){
         }
     });
    }
-
-}
-
-function showWolfModal(){
-    document.querySelector("#modalShadow").style.display = "block";
-
-
 }
 
 function closeWolfModal(){
-    document.querySelector("#modalShadow").style.display = "none";
-}
-
-function setTimeOutForModal(){
-    setTimeout(closeWolfModal,2000); 
+   $("#modalShadow").hide(); 
 }
 
 function twitterRequest (){
+    var twitterArray=[]; 
     var twitterObject={
           url: ' https://s-apis.learningfuze.com/hackathon/twitter/index.php',
           method: 'get', 
@@ -71,64 +65,42 @@ function twitterRequest (){
             var twitterData=(result.tweets.statuses);
             for (var index=0; index<twitterData.length; index++){
                 twitterArray.push(result.tweets.statuses[index].text); 
-                var twitterDiv= $("<div>").addClass("borderClass");
-                $("#tweets").append(twitterDiv)
-                $(twitterDiv).append(twitterArray[index]); 
+                var twitterDiv= $("<div>", {class : "borderClass"}); 
+                var twitterIcon=$("<i>",{class:"fab fa-twitter", src:"images/twitter.svg"}); 
+                $("#tweets").append(twitterDiv);
+                $(twitterDiv).append(twitterIcon, '   ', twitterArray[index]); 
             }
 
           },
 
           data:{
                "search_term":"werewolves",
-                "iso_language_code":"en",         
+                "hashtags":"werewolf",        
           },    
           metadata:{
-              "iso_language_code":"en"
+              "iso_language_code":"en",
+              "result_type": "recent",
           }
     }
     $.ajax(twitterObject); 
 }
 
-/*function getMoonData(year = (new Date()).getFullYear()) {
 
-    var ajaxConfig = {
-        url: 'http://api.usno.navy.mil/moon/phase',
-        method: "GET",
-        dataType: 'JSON',
-        data: {
-            year
-        },
-
-        success: function (result) {
-            console.log('2) AJAX Success function called, with the following result:', result);
-
-        }
-    };
-    $.ajax(ajaxConfig)
-}*/
-//updated moon data function so it grabs the current moon phase
 function getMoonDataDate() {
-
     var today = new Date();
     var dd = today.getDate();
-
     var mm = today.getMonth()+1;
     var yyyy = today.getFullYear();
     if(dd<10)
     {
         dd='0'+dd;
     }
-
     if(mm<10)
     {
         mm='0'+mm;
     }
-
     today = mm+'/'+dd+'/'+yyyy;
     console.log(today);
-
-
-
     var ajaxConfig = {
         url: 'http://api.usno.navy.mil/moon/phase',
         method: "GET",
@@ -137,50 +109,63 @@ function getMoonDataDate() {
             date: today,
             nump: 1
         },
-
         success: function (result) {
             console.log('2) AJAX Success function called, with the following result:', result);
-
+            var moonPhase = (result.phasedata[0].phase);
+            var date = (result.phasedata[0].date);
+            var time = (result.phasedata[0].time);
+            moonPhaseDate.push(date, ", ", time, ", Moon Phase: ", moonPhase);
+            displayMoon(moonPhase);
         }
     };
     $.ajax(ajaxConfig)
 }
 
-function play(){
-    var audio = document.getElementById("audio");
-    audio.play();
-}
 
-function displayMoon() {
-var moonArr=[
-    {
+function displayMoon(moonPhase) {
+var moonArr={
+    "First Quarter": {
         src: "images/firstquarter.jpg",
         id: "moonID",
         width: "200",
         height: "200"
     },
-    {
+    "New Moon": {
         src: "images/newmoon.png",
         id: "moonID",
         width: "200",
         height: "200"
     },
-    {
-        src: "images/fullmoon.jpg",
-        id: "moonID",
-        width: "200",
-        height: "200"
-    },
-    {
+    "Last Quarter": {
         src: "images/lastquartermoon.jpg",
         id: "moonID",
         width: "200",
         height: "200"
+    },
+    "Full Moon":{
+        src: "images/fullmoon.jpg",
+        id: "moonID",
+        width: "200",
+        height: "200"
     }
-]
-
-
-
+};
+    var moon= $("#moonPhases");
+    var moonDateDiv = $("<div>").addClass("moonDateDiv text-center").appendTo("#moonPhases");
+    var moonImage=$("<img>").attr('src',moonArr[moonPhase].src);
+    moon.append(moonImage, moonDateDiv, moonPhaseDate);
+    if (moonPhase === "Full Moon"){
+        showFullMoonModal(); 
+     // setTimeout(closeWolfModal,3000);
+    }
 }
 
-
+function showFullMoonModal(){
+    var fullMoonImage=$('<img src="images/fullmoon.gif">').addClass("modalImage")
+    var warningDiv=$("<div>",{
+        text:"Better Cancel Those Dinner Plans it is a Full Moon Tonight!",
+        class:"FullMoonWarningDivText"
+        });
+    $("#modalBody").text("Better Cancel Those Dinner Plans it is a Full Moon Tonight!"); 
+    $("#modalBody").append(fullMoonImage); 
+    $("#modalShadow").show();  
+}
