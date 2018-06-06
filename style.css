@@ -72,31 +72,31 @@ p {
     background-color:rgba(0,0,0,.4); 
     display: none; 
 }
-#modalBody{
 
-    background-image: url("images/werewolfjump2.gif");
-    background-repeat: no-repeat;
-    background-position: center;
+
+#modalBody{
     margin: 10% auto 15% auto;
     border: 1px solid mediumpurple;
     border-radius: 4px;
     width: 50%;
-    height: 50%;
-    
+    height: 50%;   
+    position:absolute; 
+    left: 25%;  
 }
+
 .borderClass{
     border: 2px solid lime;
     padding: 5%;
 }
-
+/* 
+only do one height or width change the selector be specific */
 img {
     width: 25%;
     height: 25%;
 }
 
-
-
-
-
+.FullMoonWarningDivText{
+    color: white; 
+}
 
 
