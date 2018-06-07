@@ -44,10 +44,11 @@ function getWeatherData(){
             $('#displayWeather').text(displayWeatherInfo + ' Degrees')
             if(displayWeatherInfo < 80){
                var modalImage=$('<img src="images/werewolfjump2.gif">').addClass("modalImage")
-               $("#modalBody").append(modalImage); 
+               $("#modalBody").text("Bolt yourself in tonight it's going to be a cold one! You don't want to end up naked in a frosty field!"); 
+               $("#modalBody").append(modalImage);
                 showWolfModal();
                 $('#city').val('')
-                setTimeout(closeWolfModal,3000);
+                setTimeout(closeWolfModal,4000);
             }
         },
         error: function(err){
@@ -63,7 +64,6 @@ function showWolfModal(){
 function closeWolfModal(){
    $("#modalBody").empty();
    $('#modalShadow').hide(); 
-
 }
 
 function twitterRequest (){
@@ -171,10 +171,6 @@ var moonArr={
 
 function showFullMoonModal(){
     var fullMoonImage=$('<img src="images/fullmoon.gif">').addClass("modalImage")
-    var warningDiv=$("<div>",{
-        text:"Better Cancel Those Dinner Plans it is a Full Moon Tonight!",
-        class:"FullMoonWarningDivText"
-        });
     $("#modalBody").text("Better Cancel Those Dinner Plans it is a Full Moon Tonight!"); 
     $("#modalBody").append(fullMoonImage); 
     $("#modalShadow").show();  
