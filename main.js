@@ -13,7 +13,14 @@ startImageCycle(2000);
 }
 
 function attachEventforWeather(){
-    $("#weatherBtn").on("click", getWeatherData  )
+    $("#weatherBtn").on("click", getWeatherData  );
+    var input = document.getElementById("city");
+    input.addEventListener("keyup", function(event) {
+        event.preventDefault();
+        if (event.keyCode === 13) {
+            document.getElementById("weatherBtn").click();
+        }
+    });
 }
 
 function play(){
