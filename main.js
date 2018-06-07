@@ -9,6 +9,7 @@ attachEventforWeather();
 twitterRequest();
 getMoonDataDate();
 getNews();
+getCocktail();
 startImageCycle(2000);
 }
 
@@ -236,4 +237,88 @@ function getNews() {
         }
     };
     $.ajax(ajaxConfig);
+}
+
+function getCocktail() {
+
+    var ajaxConfig ={
+        url: 'https://www.thecocktaildb.com/api/json/v1/1/random.php',
+        data: {
+        },
+        dataType: 'json',
+        success: function (response) {
+            console.log(response);
+
+
+
+            var boozeyTime = response.drinks[0];
+            var cocktail = response.drinks[0].strDrink;
+            var img = response.drinks[0].strDrinkThumb;
+            var instructions = response.drinks[0].strInstructions;
+
+            var ingredient1 = boozeyTime.strIngredient1;
+            var ingredient2 = boozeyTime.strIngredient2;
+            var ingredient3 = boozeyTime.strIngredient3;
+            var ingredient4 = boozeyTime.strIngredient4;
+            var ingredient5 = boozeyTime.strIngredient5;
+            var ingredient6 = boozeyTime.strIngredient6;
+            var ingredient7 = boozeyTime.strIngredient7;
+            var ingredient8 = boozeyTime.strIngredient8;
+            var ingredient9 = boozeyTime.strIngredient9;
+            var ingredient10 = boozeyTime.strIngredient10;
+
+            var ingredientArray = [];
+
+            ingredientArray.push(ingredient1, ingredient2, ingredient3, ingredient4,
+                ingredient5, ingredient6, ingredient7, ingredient8, ingredient9, ingredient10);
+
+
+
+            var makeDivforBooze = $("<div>").addClass("booze");
+            var makeCocktailName = $("<p>").addClass("drinkName").text(cocktail);
+            var recipeInstructions = $("<div>").addClass("instructions").text(instructions);
+            var makeImg = $("<img>").addClass("drinkPic").attr("src", img);
+            var ingredientList = $('<ul>');
+            var measurementList = $("<ul>");
+
+
+
+            var measure1 = boozeyTime.strMeasure1;
+            var measure2 = boozeyTime.strMeasure2;
+            var measure3 = boozeyTime.strMeasure3;
+            var measure4 = boozeyTime.strMeasure4;
+            var measure5 = boozeyTime.strMeasure5;
+            var measure6 = boozeyTime.strMeasure6;
+            var measure7 = boozeyTime.strMeasure7;
+            var measure8 = boozeyTime.strMeasure8;
+            var measure9 = boozeyTime.strMeasure9;
+            var measure10 = boozeyTime.strMeasure10;
+
+            var measurementArray = [];
+
+            measurementArray.push(measure1, measure2, measure3, measure4,
+                measure5, measure6, measure7, measure8, measure9, measure10);
+
+            $(ingredientList).append();
+            makeDivforBooze.append(makeImg, makeCocktailName, recipeInstructions, ingredientList, measurementList);
+            $("#recipe").append(makeDivforBooze);
+
+            var badValues = ['', " ", null];
+
+            for (var i=0; i<ingredientArray.length; i++) {
+                if (badValues.indexOf(ingredientArray[i]) === -1) {
+                    var listItem =$("<li>").text(measurementArray[i] + " " + ingredientArray[i]);
+                    // $(ingredientList).append(listItem);
+
+                    //var measurementItem =$("<li>").text(measurementArray[i]);
+                    measurementList.append(listItem);
+                }
+            }
+
+
+        }
+
+
+    };
+    $.ajax(ajaxConfig)
 }
