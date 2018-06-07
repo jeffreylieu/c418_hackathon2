@@ -27,7 +27,7 @@ body {
     box-shadow: 0 0 50px mediumpurple;
 }
 
-#tweets, #moonPhases, .weatherContainer {
+#tweets, #moonPhases, .weatherContainer, #recipe {
     background-color: black;
     font-family: 'Creepster', cursive, Arial, Helvetica, sans-serif; 
     color: lime;
@@ -39,7 +39,7 @@ body {
     font-size: 130%;
 }
 
-#tweets, #news {
+#tweets, #news, #recipe {
     overflow-y: scroll;
     height: 40vh;
     padding-top: 0;
@@ -118,11 +118,11 @@ p {
     border-radius: 4px;
     box-shadow: 0 0 50px mediumpurple;
 }
-.newsPic {
+.newsPic, .drinkPic {
     width: 50%;
 }
 
-#tweetTitle , #newsTitle {
+#tweetTitle , #newsTitle, #cocktailTitle {
     background-color: black;
     position: sticky;
     top: 0;
@@ -143,3 +143,4 @@ p {
     /* border: 1px solid mediumpurple; */
     border-top: none;
 }
+
