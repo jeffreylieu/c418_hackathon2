@@ -164,10 +164,10 @@ var moonArr={
 
 function showFullMoonModal(){
     var fullMoonImage=$('<img src="images/fullmoon.gif">').addClass("modalImage")
-    var warningDiv=$("<div>",{
-        text:"Better Cancel Those Dinner Plans it is a Full Moon Tonight!",
-        class:"FullMoonWarningDivText"
-        });
+    // var warningDiv=$("<div>",{
+    //     text:"Better Cancel Those Dinner Plans it is a Full Moon Tonight!",
+    //     class:"FullMoonWarningDivText"
+    //     });
     $("#modalBody").text("Better Cancel Those Dinner Plans it is a Full Moon Tonight!"); 
     $("#modalBody").append(fullMoonImage); 
     $("#modalShadow").show();  
