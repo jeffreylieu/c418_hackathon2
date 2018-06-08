@@ -75,7 +75,26 @@
     border: 1px solid mediumpurple;
     border-radius: 4px;
     box-shadow: 0 0 50px mediumpurple;
-    /*font-size: 130%;*/
+    font-size: 130%;
+}
+.weatherContainer {
+    background-color: black;
+    font-family: 'Creepster', cursive, Arial, Helvetica, sans-serif;
+    color: lime;
+    opacity: 0.9;
+    text-shadow: 0 0 75px mediumpurple;
+    border: 1px solid mediumpurple;
+    border-radius: 4px;
+    box-shadow: 0 0 50px mediumpurple;
+    font-size: 130%;
+}
+
+#tweets, #news {
+    overflow-y: scroll;
+    height: 40vh;
+    padding-top: 0;
+    font-size: 80%;
+
 }
 
 .weatherContainer {
@@ -85,6 +104,7 @@
 #city {
     color: black;
     font-size: 24px;
+
 }
 
 button {
@@ -105,13 +125,13 @@ button {
 
 #modalBody{
     margin: 10% auto 15% auto;
-    /* border: 1px solid mediumpurple; */
+    border: 1px solid mediumpurple;
     border-radius: 4px;
     width: 50%;
-    height: 50%;   
-    position:absolute; 
+    position: absolute;
     left: 25%;
     color: red;  
+
     font-family: 'Creepster', cursive, Arial, Helvetica, sans-serif;
     text-align: center;
     background-color: black;
@@ -136,7 +156,7 @@ button {
     background-color: black;
     font-family: 'Creepster', cursive;
     color: lime;
-    opacity: 0.9;
+    background-color:rgba(0,0,0,.9);
     text-shadow: 0 0 75px mediumpurple;
     border: 1px solid mediumpurple;
     border-radius: 4px;

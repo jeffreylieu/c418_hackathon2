@@ -75,7 +75,7 @@ function twitterRequest (){
           method: 'get', 
           dataType: 'json',
           success:function(result){
-            console.log("twitter data", result); 
+            //console.log("twitter data", result);
             var twitterData=(result.tweets.statuses);
             for (var index=0; index<twitterData.length; index++){
                 twitterArray.push(result.tweets.statuses[index].text); 
@@ -113,7 +113,7 @@ function getMoonDataDate() {
         mm='0'+mm;
     }
     today = mm+'/'+dd+'/'+yyyy;
-    console.log(today);
+    //console.log(today);
     var ajaxConfig = {
         url: 'http://api.usno.navy.mil/moon/phase',
         method: "GET",
@@ -123,7 +123,7 @@ function getMoonDataDate() {
             nump: 1
         },
         success: function (result) {
-            console.log('2) AJAX Success function called, with the following result:', result);
+           // console.log('2) AJAX Success function called, with the following result:', result);
             var moonPhase = (result.phasedata[0].phase);
             var date = (result.phasedata[0].date);
             var time = (result.phasedata[0].time);
@@ -167,16 +167,17 @@ var moonArr={
     moon.append(moonImage, moonDateDiv, moonPhaseDate);
     if (moonPhase === "Full Moon"){
         showFullMoonModal(); 
-        setTimeout(closeWolfModal,3000);
+       setTimeout(closeWolfModal,3000);
     }
 }
 
 function showFullMoonModal(){
-    var fullMoonImage=$('<img src="images/fullmoon.gif">').addClass("modalImage")
+    var fullMoonImage=$('<img src="images/fullmoonresizedcropped.gif">').addClass("modalImage")
     $("#modalBody").text("Better Cancel Those Dinner Plans it is a Full Moon Tonight!"); 
     $("#modalBody").append(fullMoonImage); 
-    $("#modalShadow").show();  
+    $("#modalShadow").show();
 }
+
 
 function startImageCycle(timeBetweenCycle = 3000){
     var adArray = [
@@ -212,7 +213,7 @@ function getNews() {
         },
         dataType: 'json',
         success: function (response) {
-            console.log(response);
+           //console.log(response);
             var newsData = response.articles;
             for (var index=0; index<newsData.length; index++) {
                 var description = response.articles[index].description;
@@ -248,7 +249,7 @@ function getCocktail() {
         },
         dataType: 'json',
         success: function (response) {
-            console.log(response);
+            //console.log(response);
 
 
 
@@ -327,7 +328,7 @@ function getCocktail() {
 function clickForAdvice() {
     $("#adviceTitle").on("click", getAdvice);
     $(".advice").text("");
-    console.log("advice was clicked")
+    //console.log("advice was clicked")
 }
 function getAdvice() {
 
@@ -338,7 +339,7 @@ function getAdvice() {
         },
         dataType: 'json',
         success: function (response) {
-            console.log(response);
+           // console.log(response);
 
             $("#adviceQuote").text(response.slip.advice);
 
