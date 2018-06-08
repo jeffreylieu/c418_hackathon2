@@ -1,3 +1,6 @@
+#tweets, #news {
+    overflow-y: scroll;
+}
 
 @media (max-width: 600px)
 {
@@ -13,23 +16,36 @@
         background-repeat: no-repeat;
         font-size: 18px;
     }
-}
-
-    @media (min-width: 601px)
-    {
-        body {
-            margin-bottom: 5vh;
-            align-content: center;
-            background-size: cover;
-            background-image: url(images/background.png);
-            background-attachment: fixed;
-            background-position: center;
-            background-color: black;
-            background-repeat: no-repeat;
-            font-size: 18px;
-        }
+    
+    #tweets, #news, #moonPhases, .weatherContainer, #recipe, #advice {
+        font-size: 100%;
     }
 
+    #tweets, #news {
+        height: 40vh;
+        padding-top: 0;
+    }
+}
+
+@media (min-width: 601px)
+{
+    body {
+        margin-bottom: 5vh;
+        align-content: center;
+        background-size: cover;
+        background-image: url(images/background.png);
+        background-attachment: fixed;
+        background-position: center;
+        background-color: black;
+        background-repeat: no-repeat;
+        font-size: 18px;
+    }
+
+    #tweets, #news {
+        height: 58vh;
+        font-size: 100%;
+    }
+}
 
 .jumbotron {
     background-color: black;
@@ -44,6 +60,10 @@
     background-color: rgba(0,0,0,0.6);
     text-shadow: 0 0 75px mediumpurple;
     box-shadow: 0 0 50px mediumpurple;
+}
+
+#moonPhasesTitle, #twitterTitle, #newsTitle, #cocktailTitle, #adviceTitle {
+    margin-top: 0;
 }
 
 #tweets, #moonPhases, .weatherContainer, #recipe, #advice {
@@ -74,13 +94,13 @@
     height: 40vh;
     padding-top: 0;
     font-size: 80%;
+
 }
 
 .weatherContainer {
-
     font-size: 24px;
-
 }
+
 #city {
     color: black;
     font-size: 24px;
@@ -93,14 +113,6 @@ button {
     border: 3px solid mediumpurple;
 }
 
-p {
-    font-size: 130%;
-}
-
-.titleP{
-    font-size: 150%;
-}
-
 #modalShadow{
     position:fixed; 
     left: 0; 
@@ -111,7 +123,6 @@ p {
     display: none; 
 }
 
-
 #modalBody{
     margin: 10% auto 15% auto;
     border: 1px solid mediumpurple;
@@ -119,7 +130,8 @@ p {
     width: 50%;
     position: absolute;
     left: 25%;
-    color: red;
+    color: red;  
+
     font-family: 'Creepster', cursive, Arial, Helvetica, sans-serif;
     text-align: center;
     background-color: black;
@@ -139,9 +151,8 @@ p {
 #adSpace > img{
     width: 100%;
 }
+
 #news {
-    overflow-y: scroll;
-    height: 40vh;
     background-color: black;
     font-family: 'Creepster', cursive;
     color: lime;
@@ -151,21 +162,28 @@ p {
     border-radius: 4px;
     box-shadow: 0 0 50px mediumpurple;
 }
+
 .newsPic, .drinkPic {
     width: 50%;
 }
 
-#tweetTitle , #newsTitle, #cocktailTitle {
+#tweetTitleContainer , #newsTitleContainer {
     background-color: black;
     position: sticky;
     top: 0;
     width: 100%;
+}
 
+#cocktailTitleContainer {
+    background-color: black;
+    top: 0;
+    width: 100%;
 }
 
 .newsDescription {
     font-family: Arial, Helvetica, sans-serif;
 }
+
 .news {
     margin-bottom: 10%;
 }
@@ -183,17 +201,16 @@ ul {
     padding: 0;
 
 }
+
 li, .instructions, #adviceQuote {
-    font-family: Arial;
-    font-size: 60%;
+    font-family: Arial, Helvetica, sans-serif;
 }
+
 .instructions {
     margin-top: 5%;
 }
+
 #wolfman {
     width: 50%;
-    box-shadow: 0 0 25px lime;;
-}
-#newsP, #tweetP {
-    font-size: 200%;
+    box-shadow: 0 0 25px lime;
 }
