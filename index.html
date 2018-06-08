@@ -1,20 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <title>Lycanthropia</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
-        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Creepster" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="main.js"></script>
 </head>
-
 <body>
     <div class="container">
         <div class="jumbotron">
@@ -24,7 +21,7 @@
             </div>
         </div>
         <div id="moonPhases" class="col-xs-10 col-xs-offset-1 text-center well">
-            <p id="moonPhP">Moon Phase</p>
+            <h2 id="moonPhasesTitle">Moon Phase</h2>
         </div>
         <div class="weatherContainer col-xs-10 col-xs-offset-1 text-center well">
             <div id="displayWeather">
@@ -39,44 +36,39 @@
             <audio id="audio" src="werewolfhowl.mp3"></audio>
         </div>
         <div id="tweets" class="col-xs-10 col-xs-offset-1 text-center well">
-            <div id="tweetTitle">
-                <p id="tweetP">Twitter Howls</p>
+            <div id="tweetTitleContainer">
+                <h2 id="twitterTitle">Twitter Howls</h2>
             </div>
         </div>
-
         <div id="news" class="col-xs-10 col-xs-offset-1 text-center well">
-            <div id="newsTitle">
-                <p id="newsP">Breaking News</p>
+            <div id="newsTitleContainer">
+                <h2 id="newsTitle">Breaking News</h2>
             </div>
         </div>
-
         <div id="recipe" class="col-xs-10 col-xs-offset-1 text-center well">
-            <div id="cocktailTitle">
-                <p>Suggested Cocktail</p>
+            <div id="cocktailTitleContainer">
+                <h2 id="cocktailTitle">Suggested Cocktail</h2>
             </div>
         </div>
         <div id="advice" class="col-xs-10 col-xs-offset-1 text-center well">
             <div>
                 <img id="wolfman" src="images/wolfman2.jpg">
                 </div>
-            <div id="adviceTitle">
-                <p>Consult the Oracle</p>
+            <div id="adviceTitleContainer">
+                <h3 id="adviceTitle">Consult the Oracle</h3>
                 <div id="adviceQuote"></div>
             </div>
         </div>
-
         <div id="modalShadow">
             <div id="modalBody">
                 <div id="modalText">
-              </div>
-            </div>
-       </div>
-         <div class="imagesDiv">
+                </div>
             </div>
         </div>
+        <div class="imagesDiv">
+        </div>
     </div>
-  <div id="adSpace" class="col-xs-12 col-sm-8 col-sm-offset-2">
+    <div id="adSpace" class="col-xs-12 col-sm-8 col-sm-offset-2">
     </div>
 </body>
-
 </html>
