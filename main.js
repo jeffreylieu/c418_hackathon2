@@ -10,7 +10,8 @@ twitterRequest();
 getMoonDataDate();
 getNews();
 getCocktail();
-startImageCycle(2000);
+clickForAdvice();
+startImageCycle(3000);
 }
 
 function attachEventforWeather(){
@@ -45,7 +46,7 @@ function getWeatherData(){
             $('#displayWeather').text(displayWeatherInfo + ' Degrees')
             if(displayWeatherInfo < 80){
                var modalImage=$('<img src="images/werewolfjump2.gif">').addClass("modalImage")
-               $("#modalBody").text("Bolt yourself in tonight it's going to be a cold one! You don't want to end up naked in a frosty field!"); 
+               $("#modalBody").text("Bolt yourself in tonight it's going to be a cold one! You don't want to end up nude in a frosty field!");
                $("#modalBody").append(modalImage);
                 showWolfModal();
                 $('#city').val('')
@@ -142,7 +143,7 @@ var moonArr={
         height: "200"
     },
     "New Moon": {
-        src: "images/newmoon.png",
+        src: "images/newmoon.jpg",
         id: "moonID",
         width: "200",
         height: "200"
@@ -177,7 +178,7 @@ function showFullMoonModal(){
     $("#modalShadow").show();  
 }
 
-function startImageCycle(timeBetweenCycle = 5000){
+function startImageCycle(timeBetweenCycle = 3000){
     var adArray = [
         {src: "images/ads/Werelix.png"},
         {src: "images/ads/bayer.png"},
@@ -300,7 +301,7 @@ function getCocktail() {
                 measure5, measure6, measure7, measure8, measure9, measure10);
 
             $(ingredientList).append();
-            makeDivforBooze.append(makeImg, makeCocktailName, recipeInstructions, ingredientList, measurementList);
+            makeDivforBooze.append(makeImg, makeCocktailName, ingredientList, measurementList, recipeInstructions);
             $("#recipe").append(makeDivforBooze);
 
             var badValues = ['', " ", null];
@@ -322,3 +323,29 @@ function getCocktail() {
     };
     $.ajax(ajaxConfig)
 }
+
+function clickForAdvice() {
+    $("#adviceTitle").on("click", getAdvice);
+    $(".advice").text("");
+    console.log("advice was clicked")
+}
+function getAdvice() {
+
+    var ajaxConfig ={
+        url: 'http://api.adviceslip.com/advice',
+        data: {
+
+        },
+        dataType: 'json',
+        success: function (response) {
+            console.log(response);
+
+            $("#adviceQuote").text(response.slip.advice);
+
+
+        }
+
+    };
+    $.ajax(ajaxConfig);
+}
+
