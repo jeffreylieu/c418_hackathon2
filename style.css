@@ -1,16 +1,35 @@
 
+@media (max-width: 600px)
+{
+    body {
 
-body {
-    margin-bottom: 5vh;
-    align-content: center;
-    background-size: cover;
-    background-image: url(images/background.png);
-    background-attachment: fixed;
-    background-position: center;
-    background-color: black;
-    background-repeat: no-repeat;
-    font-size: 18px;
+        margin-bottom: 5vh;
+        align-content: center;
+        background-size: cover;
+        background-image: url(images/mobilebackground.png);
+        background-attachment: fixed;
+        background-position: center;
+        background-color: black;
+        background-repeat: no-repeat;
+        font-size: 18px;
+    }
 }
+
+    @media (min-width: 601px)
+    {
+        body {
+            margin-bottom: 5vh;
+            align-content: center;
+            background-size: cover;
+            background-image: url(images/background.png);
+            background-attachment: fixed;
+            background-position: center;
+            background-color: black;
+            background-repeat: no-repeat;
+            font-size: 18px;
+        }
+    }
+
 
 .jumbotron {
     background-color: black;
@@ -22,16 +41,16 @@ body {
     color: lime;
     border: 1px solid mediumpurple;
     border-radius: 4px;
-    opacity: 0.6;
+    background-color: rgba(0,0,0,0.6);
     text-shadow: 0 0 75px mediumpurple;
     box-shadow: 0 0 50px mediumpurple;
 }
 
-#tweets, #moonPhases, .weatherContainer, #recipe {
+#tweets, #moonPhases, .weatherContainer, #recipe, #advice {
     background-color: black;
     font-family: 'Creepster', cursive, Arial, Helvetica, sans-serif; 
     color: lime;
-    opacity: 0.9;
+    background-color: rgba(0,0,0,0.9);
     text-shadow: 0 0 75px mediumpurple;
     border: 1px solid mediumpurple;
     border-radius: 4px;
@@ -39,7 +58,7 @@ body {
     font-size: 130%;
 }
 
-#tweets, #news, #recipe {
+#tweets, #news {
     overflow-y: scroll;
     height: 40vh;
     padding-top: 0;
@@ -64,6 +83,10 @@ button {
 
 p {
     font-size: 130%;
+}
+
+.titleP{
+    font-size: 150%;
 }
 
 #modalShadow{
@@ -99,8 +122,8 @@ p {
 }
 
 #moonPhases > img {
-    width: 25%;
-    height: 25%;
+    width: 46%;
+    border: 1px solid lime;
 }
 
 #adSpace > img{
@@ -127,6 +150,7 @@ p {
     position: sticky;
     top: 0;
     width: 100%;
+
 }
 
 .newsDescription {
@@ -140,7 +164,26 @@ p {
     height: 100%;
     width: 100%;
     background-repeat: no-repeat;
-    /* border: 1px solid mediumpurple; */
     border-top: none;
 }
 
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+
+}
+li, .instructions, #adviceQuote {
+    font-family: Arial;
+    font-size: 60%;
+}
+.instructions {
+    margin-top: 5%;
+}
+#wolfman {
+    width: 50%;
+    box-shadow: 0 0 25px lime;;
+}
+#newsP, #tweetP {
+    font-size: 200%;
+}
